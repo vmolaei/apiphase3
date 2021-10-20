@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
+
 
 class UserController extends Controller
 {
@@ -57,6 +57,13 @@ class UserController extends Controller
 
     }
     public function profile(){
+        $user_data = auth()->user();
+                return response()->json([
+                    "status" => 0,
+                    "message" => "Your should log in",
+                    "data"=>$user_data
+                    ]);
+
 
     }
     public function logout(){
