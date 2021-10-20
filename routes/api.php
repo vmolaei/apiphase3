@@ -24,7 +24,7 @@ Route::group(["middleware"=>["auth:api"]],function(){
     Route::get("logout",[UserController::class,"logout"]);
 
     //course Api Routes
-    Route::post("course-enrollment",[CourseController::class,"courseEnrollment"]);
+    Route::post("course-enrol",[CourseController::class,"courseEnrollment"]);
     Route::get("total-courses",[CourseController::class,"totalCourses"]);
     Route::get("delete-course/{id}",[CourseController::class,"deleteCourse"]);
 

@@ -59,14 +59,19 @@ class UserController extends Controller
     public function profile(){
         $user_data = auth()->user();
                 return response()->json([
-                    "status" => 0,
-                    "message" => "Your should log in",
+                    "status" => 1,
+                    "message" => "Your profile",
                     "data"=>$user_data
                     ]);
 
 
     }
     public function logout(){
+        auth()->logout();
+        return response()->json([
+            "status"=>1,
+            "message"=>"user logged out successfully"
+        ]);
 
     }
 }

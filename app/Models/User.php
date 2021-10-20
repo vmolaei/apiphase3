@@ -10,6 +10,8 @@ use Laravel\Sanctum\HasApiTokens;
 
 use Tymon\JWTAuth\Contracts\JWTSubject; // Add this line
 
+use App\Models\Course;
+
 class User extends Authenticatable implements JWTSubject
 {
     use HasApiTokens, HasFactory, Notifiable;
@@ -60,5 +62,11 @@ class User extends Authenticatable implements JWTSubject
     {
         return [];
     }
+
+    public function courses(){
+        return $this->hasMany(Course::class);
+    }
+
+
 
 }
