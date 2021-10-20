@@ -35,7 +35,25 @@ class UserController extends Controller
         ]);
 
     }
-    public function login(){
+    public function login(Request $request){
+        //validation
+        $request->validate([
+            "email"=>"required|email",
+            "password"=>"required"
+        ]);
+        //verify user + token
+        if(!$token=auth()->attempt(["email"=>$request->email,"password"=>$request->password])){
+            return response()->json([
+                "status"=>0,
+                "message"=>"Invalid credentionals"
+            ]);
+        }
+        //send response
+        return response()->json([
+            "status"=>1,
+            "message"=>"you logged in successfully",
+            "access_token"=>$token
+        ]);
 
     }
     public function profile(){
